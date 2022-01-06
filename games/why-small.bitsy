@@ -1,0 +1,523 @@
+why small?
+
+PAL 0
+255,255,255
+0,0,0
+0,0,0
+
+SET 0
+abbbbbbbbbbbbbbc
+diiiiiiiiiiiiiih
+dijkkkkkkkkkklih
+diqCmmmmmmmmmnih
+diqmmmmmmmmmmnih
+diqmmmmmmmmmmnih
+diqmmmmmmmmmmnih
+diqmmmmmmmmmmnih
+diqmmmmmmmmmmnih
+diqmmmmmmmmmmnih
+dirppppppppppoih
+diiiiiiiiiiiiish
+effffffffffffffg
+txxxxxxxxxxxxxxy
+uzzzzzzzzzzzzzzA
+wBBBBE~~~~BBDDB|
+WAL j,k,l,n,o,p,q
+
+TIL a
+01111111
+11000000
+10100000
+11000000
+10101010
+11000000
+10101010
+11000000
+
+TIL b
+11111111
+00000000
+00000000
+00000000
+10101010
+00000000
+10101010
+00000000
+
+TIL c
+11111110
+00000001
+00000001
+00000001
+10100001
+00000001
+10101001
+00000001
+
+TIL d
+10101010
+11000000
+10101010
+11000000
+10101010
+11000000
+10101010
+11000000
+
+TIL e
+10101010
+11000000
+10101010
+11000000
+10101010
+11010101
+11111111
+01111111
+
+TIL f
+10101010
+00000000
+10101010
+00000000
+10101010
+01010101
+11111111
+11111111
+
+TIL g
+10101001
+00000001
+10101001
+00000001
+10101001
+01010101
+11111111
+11111110
+
+TIL h
+10101001
+00000001
+10101001
+00000001
+10101001
+00000001
+10101001
+00000001
+
+TIL i
+10101010
+00000000
+10101010
+00000000
+10101010
+00000000
+10101010
+00000000
+
+TIL j
+10101010
+00000000
+10101010
+00001111
+10111111
+00001101
+10111110
+00001101
+
+TIL k
+10101010
+00000000
+10101010
+11111111
+11111111
+01010101
+11101110
+01010101
+
+TIL l
+10101010
+00000000
+10101010
+11110000
+11111110
+01110000
+11111110
+01110000
+
+TIL m
+10111011
+01010101
+11101110
+01010101
+10111011
+01010101
+11101110
+01010101
+
+TIL n
+11111110
+01110000
+11111110
+01110000
+11111110
+01110000
+11111110
+01110000
+
+TIL o
+11111110
+11110000
+11111110
+00000000
+10101010
+00000000
+10101010
+00000000
+
+TIL p
+11111111
+11111111
+11111111
+00000000
+10101010
+00000000
+10101010
+00000000
+
+TIL q
+10111111
+00001101
+10111110
+00001101
+10111111
+00001101
+10111110
+00001101
+
+TIL r
+10111111
+00001111
+10111111
+00000000
+10101010
+00000000
+10101010
+00000000
+
+TIL s
+10111100
+01000010
+10011001
+10110101
+10111101
+10111101
+01000010
+00111100
+
+TIL t
+01111111
+01101010
+00111111
+00110101
+00111111
+01111111
+01111111
+01010101
+
+TIL u
+11111111
+11010101
+10100000
+11001010
+10100000
+11001010
+10100000
+11001010
+
+TIL v
+00000000
+00000000
+00000000
+00010000
+00000000
+00000000
+00000000
+00000000
+
+TIL w
+10100000
+11001010
+10100000
+11001010
+10100000
+11001010
+10100000
+11001010
+
+TIL x
+11111111
+10101010
+11111111
+01010101
+11111111
+11111111
+11111111
+01010101
+
+TIL y
+11111110
+10101110
+11111100
+01010100
+11111100
+11111110
+11111110
+01010110
+
+TIL z
+11111111
+01010101
+00000000
+10101010
+00000000
+10101010
+00000000
+10001000
+
+TIL A
+11111111
+01010001
+00000001
+10101101
+00000001
+10101101
+00000001
+10101101
+
+TIL |
+00000001
+10101101
+00000001
+10101101
+00000001
+10101101
+00000001
+10101101
+
+TIL B
+00000000
+00100000
+00000000
+00000000
+00000100
+00000000
+00000000
+10000000
+
+TIL ~
+00000000
+00000010
+00000000
+11111111
+11111111
+11111111
+00000000
+00100000
+
+TIL C
+10101011
+00000001
+10000010
+00000101
+10101011
+01010101
+11101110
+01010101
+
+TIL D
+00000000
+00000000
+00000000
+11101100
+11101110
+11101110
+00000000
+00000000
+
+TIL E
+00000000
+00000000
+00000000
+11111110
+10000010
+11111110
+00000000
+01000000
+
+SPR A
+11101011
+10110101
+10011110
+10001101
+10000111
+10101101
+11110110
+01011101
+POS 0 5,5
+
+SPR a
+11111011
+10000101
+10000010
+11110011
+10000010
+11110011
+10000010
+11111111
+POS 0 6,8
+
+SPR b
+11111011
+10000101
+10000010
+11110011
+10000010
+11110011
+10000010
+11111111
+POS 0 6,6
+
+SPR c
+11111110
+10000111
+11111001
+10000001
+10000001
+10000001
+10000001
+11111111
+POS 0 6,4
+
+SPR d
+10111110
+01000011
+10010001
+00111001
+00000011
+10011101
+11000010
+01111101
+POS 0 11,4
+
+SPR e
+11111111
+10000011
+10110010
+10111011
+10111010
+10000011
+10000010
+11111111
+POS 0 8,4
+
+SPR f
+11111111
+11000111
+10000101
+10011001
+10011001
+10100001
+11100011
+01111111
+POS 0 4,6
+
+SPR g
+10111011
+11010111
+10111010
+10000011
+10010010
+10111011
+10000010
+01000101
+POS 0 4,8
+
+SPR h
+10111010
+01000111
+10000010
+01111111
+11101111
+01000011
+11111110
+11111111
+POS 0 9,5
+
+SPR i
+11001011
+01010101
+11111000
+01111111
+10000010
+10000011
+10000010
+11000111
+POS 0 9,7
+
+SPR j
+11111110
+01000011
+11111111
+10000001
+10011111
+10010001
+10010001
+11111111
+POS 0 11,6
+
+SPR k
+11111111
+11000001
+11001110
+11011110
+11011110
+10000001
+10111111
+10100001
+POS 0 4,4
+
+DLG a
+As a kid, roleplaying on Neopets, starting debates on gaming forums and scamming my way into daisy-chaining as many fortunecity accounts as I could to make half-baked webpages made the internet feel generative and welcoming. Part of my enjoyment, in hindsight, is of course nostalgia, and even Facebook is trying to platformize the janky aesthetic of these late 90s and early 00s homepages. 
+
+DLG b
+I started thinking even more about what all of the art I felt really mattered to me had in common, and it was this sort of broad distributability, whether it was Lucy Lippard curating conceputal art by briefcase and postcard, RPGMaker games flying across the web with a recombinatorial pirate ethos, or a warm stack of my own zines coming off the printer. The type of ownership you feel over a cherished used paperback book that has someone else's notes in it, and you write notes in it as well. This was the art that felt approachable and vital to me. 
+
+DLG c
+In 2018 I got sick of how gangly and cumbersome wordpress had gotten and remade my writing portfolio as a static HTML site. I had also been getting into zines: ephemeral self-published booklets that are empowered by the simple ubiquity of xerox machines, and bitsy: an online tool for making simple game worlds in a very intuitive, doodle-y way. I also became more aware of critical perspectives on technological innovations, and the massive waste behind streaming platforms, DRM and blockchain.
+
+DLG d
+Made by Em for Bitsy Essay Jam 2020 :)
+
+DLG e
+Working with engines like Bitsy, making my own webpage and re-teaching myself HTML and CSS, finding ways to pull out of these platforms when I can, even looking at 'failed' or 'obsolete' tech like e-ink and dithering textures feels like a way of taking this all back. 
+
+DLG f
+At the start of the epidemic, when a lot of events I was looking forward to were getting cancelled, it seemed like people were hungry for maintaining a scrap of this big-ness; you know, you'd finish a huge impressive project in lockdown or learn a whole new skill, and we could innovate events to be even better than their cancelled counterparts with massive zoom meetings, VR telepresence, and baroque 3D online exhibition and festival spaces. But everyone got burnt out on having to look good on webcams and a lot of these alternatives just made my computer burn up.
+
+DLG g
+But there was also a point where I felt like the internet I was using no longer facilitated these sorts of uses. Platforms became over-designed and bloated, wanting to be and do everything and also rake in the advertising and tracking profits for it, and the centralized cultures on these platforms became races for who had the resources and connections to create the new bar of polish or set off the new trend. The conversations became so boring because there was no place to have specific conversations, you always had to be responding to all that stuff instead. 
+
+DLG h
+The slick minimalism of things like iOS platforms and social media sites usually conceal an apparatus of tracking, algorithms and DRM. Minimalism for its own sake can become ostentation, waste and fuss. I don't refer to this impulse as minimalism but instead an impulse towards the small. 
+
+DLG k
+Lately I have been obsessed with thinking about how things could be smaller. It seems counter-intuitive; COVID has made my life much smaller, limiting me to a daily walk to the nearby park and maybe getting some socially-distanced groceries from the nearest shop, when I used to travel and go for much longer walks into the city regularly... so why would I crave more of it?
+
+DLG i
+I made this essay/game in Bitsy Classic, which is limited to one room and very basic sprite interactions. I made it this way because I think Bitsy is small and beautiful, and I want to preserve a historical view of it, but also because I had a lot to do this week, and had to scope myself to something that was doable. 
+
+DLG j
+That's what I like about these things. They aren't bottomless pits that will always demand more polish, more tech, more consolidated attention, yet they still offer a ton of creative freedom, provoking us to question if any of those things are necessary. Small can be as small or as big as you need. 
+
+
+# downloaded from https://coleo_kin.itch.io/why-small

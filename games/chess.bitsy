@@ -1,0 +1,1294 @@
+Welcome to chess
+
+PAL 0
+255,255,255
+0,0,0
+0,0,0
+
+SET 0
+00aa00aa00aa00aa
+00aa00aa00aa00aa
+aa00aa00aa00aa00
+aa00aa00aa00aa00
+00aa00aa00aa00aa
+00aa00aa00aa00aa
+aa00aa00aa00aa00
+aa00aa00aa00aa00
+00aa00aa00aa00aa
+00aa00aa00aa00aa
+aa00aa00aa00aa00
+aa00aa00aa00aa00
+00aa00aa00aa00aa
+00aa00aa00aa00aa
+aa00aa00aa00aa00
+aa00aa00aa00aa00
+
+TIL a
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+
+SPR A
+00011000
+00111100
+00111100
+00011000
+00011000
+00011000
+00111100
+01111110
+POS 0 14,2
+
+SPR a
+11111000
+11111000
+11111000
+11111000
+11110000
+11100000
+11100000
+11111111
+POS 0 4,15
+
+SPR c
+00011111
+00011111
+00011111
+00011111
+00001111
+00000111
+00000111
+11111111
+POS 0 5,15
+
+SPR d
+11111111
+11111111
+11111111
+01100111
+01100111
+00000111
+00000111
+00001111
+POS 0 5,14
+
+SPR e
+11111111
+11111111
+11111111
+11100110
+11100110
+11100000
+11100000
+11110000
+POS 0 4,14
+
+SPR f
+00000011
+00000011
+00000111
+00001111
+00000000
+00000000
+00000000
+00000000
+POS 0 2,7
+
+SPR g
+00000000
+00000000
+10000000
+11000000
+00000000
+00000000
+00000000
+00000000
+POS 0 3,7
+
+SPR h
+00000000
+00000000
+00000000
+00000000
+00000011
+00000111
+00000111
+00000011
+POS 0 2,6
+
+SPR i
+00000000
+00000000
+00000000
+00000000
+00000000
+10000000
+10000000
+00000000
+POS 0 3,6
+
+SPR j
+00000111
+00000111
+00000011
+00000011
+00000011
+00000111
+00001111
+00000000
+POS 0 10,7
+
+SPR k
+10000000
+10000000
+00000000
+00000000
+00000000
+10000000
+11000000
+00000000
+POS 0 11,7
+
+SPR l
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000011
+POS 0 10,6
+
+SPR n
+11111110
+11111101
+11111011
+11111100
+11111111
+11111111
+11111111
+11111111
+POS 0 8,7
+
+SPR o
+11011111
+11101111
+11110111
+00001111
+11111111
+11111111
+11111111
+11111111
+POS 0 9,7
+
+SPR p
+11111111
+11111111
+11111111
+11111110
+11111101
+11111101
+11111110
+11111110
+POS 0 8,6
+
+SPR q
+11111111
+11111111
+00111111
+11011111
+11101111
+11101111
+11011111
+11011111
+POS 0 9,6
+
+SPR r
+11111101
+11111101
+11111101
+11111011
+11110111
+11111000
+11111111
+11111111
+POS 0 14,5
+
+SPR s
+10111111
+10111111
+10111111
+11011111
+11101111
+00011111
+11111111
+11111111
+POS 0 15,5
+
+SPR t
+11111111
+11111111
+11111111
+11111111
+11111110
+11111101
+11111011
+11111011
+POS 0 14,4
+
+SPR u
+11111111
+11111111
+11111111
+11111111
+01111111
+10111111
+11011111
+11011111
+POS 0 15,4
+
+SPR v
+11111100
+11110000
+11111100
+11111000
+11111000
+11110001
+11111111
+11111111
+POS 0 8,11
+
+SPR w
+00111111
+00001111
+00111111
+00011111
+00011111
+10001111
+11111111
+11111111
+POS 0 9,11
+
+SPR x
+11111111
+11111111
+11111111
+11111110
+11111100
+11111000
+11111001
+11111000
+POS 0 8,10
+
+SPR y
+11111111
+11111111
+11111111
+01111111
+00111111
+00011111
+10011111
+00011111
+POS 0 9,10
+
+SPR z
+11111101
+11111101
+11111101
+11111011
+11110111
+11111000
+11111111
+11111111
+POS 0 4,3
+
+SPR 1a
+10111111
+10111111
+10111111
+11011111
+11101111
+00011111
+11111111
+11111111
+POS 0 5,3
+
+SPR 1b
+11111111
+11111111
+11111111
+11111111
+11111110
+11111101
+11111011
+11111011
+POS 0 4,2
+
+SPR 1c
+11111111
+11111111
+11111111
+11111111
+01111111
+10111111
+11011111
+11011111
+POS 0 5,2
+
+SPR 1d
+11111110
+11111110
+11111110
+11111100
+11111000
+11111111
+11111111
+11111111
+POS 0 2,13
+
+SPR 1e
+01111111
+01111111
+01111111
+00111111
+00011111
+11111111
+11111111
+11111111
+POS 0 3,13
+
+SPR 1f
+11111111
+11111111
+11111111
+11111111
+11111111
+11111110
+11111100
+11111100
+POS 0 2,12
+
+SPR 1g
+11111111
+11111111
+11111111
+11111111
+11111111
+01111111
+00111111
+00111111
+POS 0 3,12
+
+SPR 1h
+11110011
+11110011
+11100001
+11000000
+11111111
+11111111
+11111111
+11111111
+POS 0 14,13
+
+SPR 1j
+11111111
+11111111
+11111111
+11111111
+11110011
+11100001
+11100001
+11110011
+POS 0 14,12
+
+SPR 1l
+00000001
+00000001
+00000001
+00000010
+00000100
+00000011
+00000000
+00000000
+POS 0 10,11
+
+SPR 1m
+00100000
+00100000
+00100000
+00010000
+00001000
+11110000
+00000000
+00000000
+POS 0 11,11
+
+SPR 1n
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+00000010
+00000010
+POS 0 10,10
+
+SPR 1o
+00000000
+00000000
+00000000
+00000000
+11000000
+00100000
+00010000
+00010000
+POS 0 11,10
+
+SPR 1p
+00000100
+00000100
+00001000
+00010000
+00001111
+00000000
+00000000
+00000000
+POS 0 6,7
+
+SPR 1q
+01000000
+01000000
+01000000
+00100000
+00010000
+11100000
+00000000
+00000000
+POS 0 9,9
+
+SPR 1r
+00000000
+00000000
+00000000
+00000000
+00000001
+00000010
+00000100
+00000100
+POS 0 8,8
+
+SPR 1t
+11111100
+11111000
+11110000
+11111111
+11111111
+11111111
+11111111
+11111111
+POS 0 12,11
+
+SPR 1w
+11111111
+11111111
+11111111
+11111111
+01111111
+01111111
+11111111
+11111111
+POS 0 13,10
+
+SPR 1x
+00000010
+00000010
+00000010
+00000100
+00001000
+00000111
+00000000
+00000000
+POS 0 8,9
+
+SPR 1y
+10000000
+10000000
+01000000
+00100000
+11000000
+00000000
+00000000
+00000000
+POS 0 7,7
+
+SPR 1z
+00000000
+00000000
+00000000
+00000011
+00000100
+00001000
+00001000
+00000100
+POS 0 6,6
+
+SPR 2a
+00000000
+00000000
+00000000
+00000000
+10000000
+01000000
+01000000
+10000000
+POS 0 7,6
+
+SPR 2b
+11111111
+01111111
+00111111
+11111111
+11111111
+11111111
+11111111
+11111111
+POS 0 13,11
+
+SPR 2c
+11111111
+11111111
+11111111
+11111100
+11111000
+11111000
+11111100
+11111100
+POS 0 12,10
+
+SPR 2d
+00000000
+00000000
+00000000
+00000000
+10000000
+01000000
+00100000
+00100000
+POS 0 9,8
+
+SPR 2e
+00000111
+00000111
+00000111
+00000111
+00001111
+00011111
+00011111
+00000000
+POS 0 0,1
+
+SPR 2f
+11100000
+11100000
+11100000
+11100000
+11110000
+11111000
+11111000
+00000000
+POS 0 1,1
+
+SPR 2g
+00000000
+00000000
+00000000
+10011000
+10011000
+11111000
+11111000
+11110000
+POS 0 1,0
+
+SPR 2h
+00000000
+00000000
+00000000
+00011001
+00011001
+00011111
+00011111
+00001111
+POS 0 0,0
+
+SPR 2i
+11110000
+11111110
+11111110
+11111100
+11111000
+11110000
+11110000
+11111111
+POS 0 12,15
+
+SPR 2j
+00000111
+00000111
+00001111
+00011111
+00011111
+00001111
+00001111
+11111111
+POS 0 13,15
+
+SPR 2k
+11111111
+11111111
+11111111
+01111111
+00011111
+00001111
+00000111
+00000111
+POS 0 13,14
+
+SPR 2l
+11111111
+11111111
+11111111
+11111100
+11110000
+11100010
+11100000
+11111100
+POS 0 12,14
+
+SPR 2m
+11110000
+11111110
+11111110
+11111100
+11111000
+11110000
+11110000
+11111111
+POS 0 4,7
+
+SPR 2n
+00000111
+00000111
+00001111
+00011111
+00011111
+00001111
+00001111
+11111111
+POS 0 5,7
+
+SPR 2o
+11111111
+11111111
+11111111
+01111111
+00011111
+00001111
+00000111
+00000111
+POS 0 5,6
+
+SPR 2p
+11111111
+11111111
+11111111
+11111100
+11110000
+11100010
+11100000
+11111100
+POS 0 4,6
+
+SPR 2q
+00001111
+00000001
+00000001
+00000011
+00000111
+00001111
+00001111
+00000000
+POS 0 12,5
+
+SPR 2r
+11111000
+11111000
+11110000
+11100000
+11100000
+11110000
+11110000
+00000000
+POS 0 13,5
+
+SPR 2s
+00000000
+00000000
+00000000
+10000000
+11100000
+11110000
+11111000
+11111000
+POS 0 13,4
+
+SPR 2t
+00000000
+00000000
+00000000
+00000011
+00001111
+00011101
+00011111
+00000011
+POS 0 12,4
+
+SPR 2u
+00000110
+00000111
+00000111
+00000111
+00000111
+00001111
+00011111
+00000000
+POS 0 14,7
+
+SPR 2v
+11000000
+11000000
+11000000
+11000000
+11000000
+11100000
+11110000
+00000000
+POS 0 15,7
+
+SPR 2w
+00000000
+00000010
+00001000
+00000010
+00001010
+00001011
+00001111
+00001111
+POS 0 14,6
+
+SPR 2x
+00000000
+10000000
+00100000
+10000000
+10100000
+10100000
+11100000
+11100000
+POS 0 15,6
+
+SPR 3a
+00011001
+00001000
+00001000
+00001000
+00011000
+00110000
+00100000
+00111111
+POS 0 4,13
+
+SPR 3b
+00110000
+00100000
+00100000
+00100000
+00110000
+00011000
+00001000
+11111000
+POS 0 5,13
+
+SPR 3c
+00000111
+00011101
+00010111
+00011101
+00010101
+00010100
+00010000
+00010000
+POS 0 4,12
+
+SPR 3d
+11000000
+01110000
+11010000
+01110000
+01010000
+01010000
+00010000
+00010000
+POS 0 5,12
+
+SPR 3e
+00001011
+00000111
+00000011
+00000011
+00000111
+00001111
+00000000
+00000000
+POS 0 12,1
+
+SPR 3f
+11010000
+11100000
+11000000
+11000000
+11100000
+11110000
+00000000
+00000000
+POS 0 13,1
+
+SPR 3g
+00000000
+00000000
+00000000
+00000000
+10000000
+01000000
+01100000
+10010000
+POS 0 13,0
+
+SPR 3h
+00000000
+00000000
+00000000
+00000000
+00000001
+00000010
+00000110
+00001001
+POS 0 12,0
+
+SPR 3i
+00010011
+00011001
+00001100
+00001100
+00011000
+00010000
+00011111
+00000000
+POS 0 14,15
+
+SPR 3j
+11001000
+10011000
+00110000
+00110000
+00011000
+00001000
+11111000
+00000000
+POS 0 15,15
+
+SPR 3k
+00000000
+00000000
+00000000
+11100000
+00110000
+01011000
+01001000
+00001000
+POS 0 15,14
+
+SPR 3l
+00000000
+00000000
+00000000
+00000111
+00001100
+00011010
+00010010
+00010000
+POS 0 14,14
+
+SPR 3m
+00000011
+00001111
+00000011
+00000111
+00000111
+00001110
+00000000
+00000000
+POS 0 6,3
+
+SPR 3n
+11000000
+11110000
+11000000
+11100000
+11100000
+01110000
+00000000
+00000000
+POS 0 7,3
+
+SPR 3o
+00000000
+00000000
+00000000
+00000001
+00000011
+00000111
+00000110
+00000111
+POS 0 6,2
+
+SPR 3p
+00000000
+00000000
+00000000
+10000000
+11000000
+11100000
+01100000
+11100000
+POS 0 7,2
+
+SPR 3q
+11110011
+11101111
+11110011
+11110111
+11110111
+11101110
+11110001
+11111111
+POS 0 6,5
+
+SPR 3r
+11001111
+11110111
+11001111
+11101111
+11101111
+01110111
+10001111
+11111111
+POS 0 7,5
+
+SPR 3s
+11111111
+11111111
+11111110
+11111101
+11111011
+11110111
+11110110
+11110111
+POS 0 6,4
+
+SPR 3t
+11111111
+11111111
+01111111
+10111111
+11011111
+11101111
+01101111
+11101111
+POS 0 7,4
+
+DLG a
+I'm a tower, but I can still move!                           I won't do it right now though...
+
+DLG 2e
+Fighting's scary... I'm gonna hang out in this corner for now.
+
+DLG 1b
+I'm blending into this tile like a ninja...                     Hey! How'd you find me?!
+
+DLG 1c
+I'm blending into this tile like a ninja...                     Hey! How'd you find me?!
+
+DLG z
+I'm blending into this tile like a ninja...                     Hey! How'd you find me?!
+
+DLG 1a
+I'm blending into this tile like a ninja...                     Hey! How'd you find me?!
+
+DLG 1d
+Omigosh, i'm standing right next to the queen! She's so fancy!!!
+
+DLG 1e
+Omigosh, i'm standing right next to the queen! She's so fancy!!!
+
+DLG 1f
+Omigosh, i'm standing right next to the queen! She's so fancy!!!
+
+DLG 1g
+Omigosh, i'm standing right next to the queen! She's so fancy!!!
+
+DLG 1j
+Ha-haa! No one can get past me!
+
+DLG 1h
+Ha-haa! No one can get past me!
+
+DLG 1l
+Apparently this guy next to me is some kinda priest...     Well, good for him i suppose
+
+DLG 1m
+Apparently this guy next to me is some kinda priest...     Well, good for him i suppose
+
+DLG 1n
+Apparently this guy next to me is some kinda priest...     Well, good for him i suppose
+
+DLG 1o
+Apparently this guy next to me is some kinda priest...     Well, good for him i suppose
+
+DLG 1p
+I may just be a pawn, but I'm reallllly strong!
+
+DLG 1y
+I may just be a pawn, but I'm reallllly strong!
+
+DLG 1z
+I may just be a pawn, but I'm reallllly strong!
+
+DLG 2a
+I may just be a pawn, but I'm reallllly strong!
+
+DLG 1q
+phew, it's tough out here on the frontlines
+
+DLG 1r
+phew, it's tough out here on the frontlines
+
+DLG 1x
+phew, it's tough out here on the frontlines
+
+DLG 2d
+phew, it's tough out here on the frontlines
+
+DLG 1t
+maaan, i'm so sick of fighting! can't we all just be friends?
+
+DLG 1w
+maaan, i'm so sick of fighting! can't we all just be friends?
+
+DLG 2b
+maaan, i'm so sick of fighting! can't we all just be friends?
+
+DLG 2c
+maaan, i'm so sick of fighting! can't we all just be friends?
+
+DLG 2f
+Fighting's scary... I'm gonna hang out in this corner for now.
+
+DLG 2g
+Fighting's scary... I'm gonna hang out in this corner for now.
+
+DLG 2h
+Fighting's scary... I'm gonna hang out in this corner for now.
+
+DLG 2i
+I may be a horse, but I'll protect King Smiley to the end! Go away!
+
+DLG 2j
+I may be a horse, but I'll protect King Smiley to the end! Go away!
+
+DLG 2k
+I may be a horse, but I'll protect King Smiley to the end! Go away!
+
+DLG 2l
+I may be a horse, but I'll protect King Smiley to the end! Go away!
+
+DLG 2m
+Neighhhh...                                                     What, did you expect a horse to speak?
+
+DLG 2n
+Neighhhh...                                                     What, did you expect a horse to speak?
+
+DLG 2o
+Neighhhh...                                                     What, did you expect a horse to speak?
+
+DLG 2p
+Neighhhh...                                                     What, did you expect a horse to speak?
+
+DLG 2q
+well i don't know what's going on, i'm just a horse!
+
+DLG 2r
+well i don't know what's going on, i'm just a horse!
+
+DLG 2s
+well i don't know what's going on, i'm just a horse!
+
+DLG 2t
+well i don't know what's going on, i'm just a horse!
+
+DLG 2u
+So i married a tree guy, big deal! I'm a queen now.
+
+DLG 2v
+So i married a tree guy, big deal! I'm a queen now.
+
+DLG 2w
+So i married a tree guy, big deal! I'm a queen now.
+
+DLG 2x
+So i married a tree guy, big deal! I'm a queen now.
+
+DLG 3a
+Hi there little pawn. I'm working on a new gambit...
+
+DLG 3b
+Hi there little pawn. I'm working on a new gambit...
+
+DLG 3c
+Hi there little pawn. I'm working on a new gambit...
+
+DLG 3d
+Hi there little pawn. I'm working on a new gambit...
+
+DLG 3e
+Hello there, you little pawn! Welcome to the battlefield.    We may look like a tree, but actually, We are your king! Anyway, We are sending you on a special mission:                You must sneak past enemy lines and assassinate King Smiley, right under their noses!    Aren't We quite devious?       Go on now, little pawn, We have plenty of other wars to get to.
+
+DLG 3f
+Hello there, you little pawn! Welcome to the battlefield.    We may look like a tree, but actually, We are your king! Anyway, We are sending you on a special mission:                You must sneak past enemy lines and assassinate King Smiley, right under their noses!    Aren't We quite devious?       Go on now, little pawn, We have plenty of other wars to get to.
+
+DLG 3g
+Hello there, you little pawn! Welcome to the battlefield.    We may look like a tree, but actually, We are your king! Anyway, We are sending you on a special mission:                You must sneak past enemy lines and assassinate King Smiley, right under their noses!    Aren't We quite devious?       Go on now, little pawn, We have plenty of other wars to get to.
+
+DLG 3h
+Hello there, you little pawn! Welcome to the battlefield.    We may look like a tree, but actually, We are your king! Anyway, We are sending you on a special mission:                You must sneak past enemy lines and assassinate King Smiley, right under their noses!    Aren't We quite devious?       Go on now, little pawn, We have plenty of other wars to get to.
+
+DLG 3i
+Well hi there! I'm always smiling, because I alw-huh? ghhuh, I, no... it can't end like this....                king, guh, king tree sent you? *splutter* well then...         i guess you win today.         but next time.......            (he's dead)
+
+DLG 3k
+Well hi there! I'm always smiling, because I alw-huh? ghhuh, I, no... it can't end like this....                king, guh, king tree sent you? *splutter* well then...         i guess you win today.         but next time.......            (he's dead)
+
+DLG 3j
+Well hi there! I'm always smiling, because I alw-huh? ghhuh, I, no... it can't end like this....                king, guh, king tree sent you? *splutter* well then...         i guess you win today.         but next time.......            (he's dead)
+
+DLG 3l
+Well hi there! I'm always smiling, because I alw-huh? ghhuh, I, no... it can't end like this....                king, guh, king tree sent you? *splutter* well then...         i guess you win today.         but next time.......            (he's dead)
+
+DLG 3m
+Me and my brother are both bishops. What a coincidence!
+
+DLG 3n
+Me and my brother are both bishops. What a coincidence!
+
+DLG 3o
+Me and my brother are both bishops. What a coincidence!
+
+DLG 3p
+Me and my brother are both bishops. What a coincidence!
+
+DLG 3q
+I became a bishop so I could hang out with my brother!
+
+DLG 3r
+I became a bishop so I could hang out with my brother!
+
+DLG 3s
+I became a bishop so I could hang out with my brother!
+
+DLG 3t
+I became a bishop so I could hang out with my brother!
+
+DLG c
+I'm a tower, but I can still move!                           I won't do it right now though...
+
+DLG d
+I'm a tower, but I can still move!                           I won't do it right now though...
+
+DLG e
+I'm a tower, but I can still move!                           I won't do it right now though...
+
+DLG f
+I don't like the way this horse is looking at me...
+
+DLG g
+I don't like the way this horse is looking at me...
+
+DLG h
+I don't like the way this horse is looking at me...
+
+DLG i
+I don't like the way this horse is looking at me...
+
+DLG j
+I'm gonna stand right here! I don't care who wants to get by!
+
+DLG k
+I'm gonna stand right here! I don't care who wants to get by!
+
+DLG l
+I'm gonna stand right here! I don't care who wants to get by!
+
+DLG q
+Gah! Is this... my blood? No... (the pawn is clutching a locket) Angeline, my love... Perhaps we'll meet again some day...
+
+DLG n
+Gah! Is this... my blood? No... (the pawn is clutching a locket) Angeline, my love... Perhaps we'll meet again some day...
+
+DLG o
+Gah! Is this... my blood? No... (the pawn is clutching a locket) Angeline, my love... Perhaps we'll meet again some day...
+
+DLG p
+Gah! Is this... my blood? No... (the pawn is clutching a locket) Angeline, my love... Perhaps we'll meet again some day...
+
+DLG r
+The king was looking for you, I guess you've got a new mission. He's the tree-shaped guy up there...
+
+DLG t
+The king was looking for you, I guess you've got a new mission. He's the tree-shaped guy up there...
+
+DLG s
+The king was looking for you, I guess you've got a new mission. He's the tree-shaped guy up there...
+
+DLG u
+The king was looking for you, I guess you've got a new mission. He's the tree-shaped guy up there...
+
+DLG v
+These poor souls... They're all so lucky I'm here.
+
+DLG w
+These poor souls... They're all so lucky I'm here.
+
+DLG x
+These poor souls... They're all so lucky I'm here.
+
+DLG y
+These poor souls... They're all so lucky I'm here.
+
+
+# downloaded from https://embop.itch.io/chess
