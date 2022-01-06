@@ -1,0 +1,86 @@
+@strcmp ( a* b* -- a-end* b-end* order nonzero if strings differ
+                OR a-end* b-end* 00    00      if strings match )
+	STH2
+	,&entry JMP
+
+	&loop ( a* a b / b* )
+	SUB ,&nomatch JCNk ( a* a-b nonzero / b* )
+	POP2 ( a* / b* )
+	INC2 INC2r
+	&entry ( a* / b* )
+	LDAk LDAkr STHr ( a* a b / b* )
+	ORAk ,&loop JCN
+
+	&nomatch ( a* a-b flag / b* )
+	STH2r SWP2 ( a* b* a-b flag )
+	JMP2r
+
+@strlen ( string-ptr* -- length^ )
+	LIT2r 0000
+	,&entry JMP
+
+	&loop
+	INC2 INC2r
+	&entry
+	LDAk ,&loop JCN
+	POP2 STH2r
+	JMP2r
+
+( scans bytes following its call location for a null byte,
+  and returns to the instruction following that byte, leaving
+  the start of the string on the stack )
+( -- s* )
+@inline-str
+  STH2r ( s* )
+  DUP2 ( s* s'* )
+  &loop
+    LDAk ( s* s'* b )
+    STH INC2 STHr ( s* s'*+1 b )
+    #00 NEQ ,&loop JCN
+  ( s* s'* )
+  JMP2
+
+( src* dest* cnt -- )
+@memcpy
+  OVR2 ADD2 ( src* dest* end* )
+  ROT2 STH2 ( dest* end* : src* )
+  SWP2 ( end* dest* : src* )
+  &loop
+    LDArk ( end* dest* : b src* )
+    #00 STHr OVR2 ( end* dest* 00 b dest* : src* )
+    STA POP ( end* dest* : src* )
+    INC2 INC2r ( end* dest+1* : src+1* )
+    NEQ2k ,&loop JCN
+  ( end* dest* : src* )
+  POP2r POP2 POP2
+  RTN
+
+( byte cnt dest* -- )
+@memset
+  SWP2 OVR2 ADD2 ( byte dest* end* )
+  ( byte dest* end* )
+  &loop
+    STH2 STAk INC2 STH2r
+    ( byte dest+1* end* )
+    NEQ2k ,&loop JCN
+  ( byte dest* end* )
+  POP2 POP2 POP
+  RTN
+
+( short out* -- )
+@string-short
+  [ ,&out STR2 ]
+  OVR #04 SFT ,&hex JSR
+  SWP #0f AND ,&hex JSR
+  DUP #04 SFT ,&hex JSR
+      #0f AND ,&hex JMP
+
+  &hex
+  #30 ADD DUP #3a LTH ,&not-alpha JCN
+  #27 ADD
+  &not-alpha
+  [ ,&out LDR2 ] STA
+  [ ,&out LDR2 ] INC2 [ ,&out STR2 ]
+  RTN
+  [ &out $2 ]
+

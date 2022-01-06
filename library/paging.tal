@@ -1,0 +1,93 @@
+( page-count -- )
+@paging-init
+  DUP2 [ ;paging/page-count STA2 ]
+  ( pagenum )
+  &loop
+    DEC2 ( pagenum-1 )
+    DUP2 ;paging-open-page-file JSR2
+    #01 .File/delete DEO
+    DUP2 #0000 NEQ2 ,&loop JCN
+  POP2
+  #00 PAGESIZE ;paging-page ;memset JSR2
+  #0000 [ ;paging/loaded-page STA2 ]
+  ;paging/fault-count #0000 ;short-to-64 JSR2
+  RTN
+
+( pagenum offset -- b )
+@paged-get
+  STH2 STH2
+  ;&byte #0001 STH2r STH2r ;paged-copy-from JSR2
+  LIT [ &byte $1 ]
+  RTN
+
+( b pagenum offset -- )
+@paged-set
+  STH2 STH2 [ ;&byte STA ]
+  ;&byte #0001 STH2r STH2r ;paged-copy-to JSR2
+  RTN
+  [ &byte $1 ]
+
+( dst* cnt pagenum offset -- )
+@paged-copy-from
+  SWP2 ;paging-load-page JSR2
+  ;paging-page ADD2
+  ( dst* cnt src* )
+  ROT2 ROT2
+  ( src* dst* cnt )
+  ;memcpy JMP2
+
+( src* cnt pagenum offset -- )
+@paged-copy-to
+  ( OVR2 DBGSHORTn POP2 LIT ': EMIT DBGSHORT )
+  SWP2 ;paging-load-page JSR2
+  ;paging-page ADD2
+  ( src* cnt dst* )
+  SWP2
+  ( src* dst* cnt )
+  ;memcpy JMP2
+
+( pagenum -- )
+@paging-load-page
+  DUP2 [ ;paging/loaded-page LDA2 ] EQU2 ,&skip JCN
+  ( LIT 'F EMIT )
+  ;paging/fault-count #01 ;add64-byte JSR2
+  ( pagenum )
+  DUP2 [ ;paging/page-count LDA2 ] LTH2 ,&page-ok JCN
+    P< "page_out_of_bounds 20 >P DBGSHORT
+    !
+  &page-ok
+
+  [ ;paging/loaded-page LDA2 ] ;paging-save-page JSR2 ( pagenum )
+  DUP2 [ ;paging/loaded-page STA2 ] ( pagenum )
+
+  ;paging-open-page-file JSR2
+  ;paging-page .File/read DEO2
+  .File/success DEI2 ( length )
+  #0000 NEQ2 ,&success JCN
+    ;&devzero .File/name DEO2
+    ;paging-page .File/read DEO2
+  &success
+  RTN
+  [ &devzero "/dev/zero 00 ]
+
+  &skip
+  POP2
+  RTN
+
+( pagenum -- )
+@paging-save-page
+  ;paging-open-page-file JSR2
+  ;paging-page .File/write DEO2
+  RTN
+
+( pagenum -- )
+@paging-open-page-file
+  ;&filename ;string-short JSR2
+  ;&filename .File/name DEO2
+  PAGESIZE .File/length DEO2
+  RTN
+  [ &filename "0000.swp 00 ]
+
+@paging
+  [ &loaded-page $2 &page-count $2 &fault-count $8 ]
+@paging-page PAGEPAD

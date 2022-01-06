@@ -1,0 +1,70 @@
+~library/macros.tal
+~library/devices.tal
+
+( variables )
+
+|0000
+
+( init )
+
+|0100
+  ( vector )
+  ;on-frame .Screen/vector DEO2
+
+  ( theme )
+  #0f00 .System/r DEO2
+  #00f0 .System/g DEO2
+  #000f .System/b DEO2
+
+  #0100 .Screen/width DEO2
+  #0100 .Screen/height DEO2
+
+  ;on-arg-char .Console/vector DEO2
+  BRK !
+
+@on-arg-char
+  .Console/read DEI ( char )
+  DUP #0a EQU ,&complete JCN
+  ;argv #00 ,&argptr LDR ADD2 STA
+  ,&argptr LDR INC ,&argptr STR
+  BRK !
+
+  &complete
+  POP
+
+  ;on-arg-received JMP2
+
+  [ &argptr $1 ]
+
+@on-frame ( -> )
+  ;draw-pixels JSR2
+  BRK
+
+[ @argv $100 ]
+
+@on-arg-received
+  ;argv ;parser/parse JSR2
+
+  BRK
+
+@draw-pixels ( -- )
+
+  #01 .Screen/auto DEO
+  #0000 .Screen/x DEO2
+
+  #0000 .Screen/height DEI2
+  DO
+    DUP2 .Screen/y DEO2
+    #0000 .Screen/x DEO2
+    #0000 .Screen/width DEI2
+    DO
+    DUP4
+    ADD2 NIP #04 SFT .Screen/pixel DEO
+    LOOP
+  LOOP
+
+RTN
+
+~library/string.tal
+~library/console.lib.tal
+~bitsy_lib.tal

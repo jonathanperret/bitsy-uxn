@@ -1,0 +1,109 @@
+@parser
+  ( filename* -- )
+  &parse
+    DUP2 P< "Loading 20 >P ;print JSR2 LF
+
+    ;&open-file JSR2
+
+    &next-line
+      ;&get-line JSR2 ,&eof JCN
+
+      LIT2 "PA LIT "L ;&check-not-type JSR2 ,&not-pal JCN
+        ;&line ;print JSR2 LF
+        ;&read-palette JSR2
+      &not-pal
+
+      ;&next-line JMP2
+
+    &eof
+
+    RTN
+
+  ( A B C -- notmatch? )
+  &check-not-type
+    ;&line INC2 LDA2 NEQ2 STH
+    ;&line LDA NEQ
+    STHr ORA
+    RTN
+
+  ( -- )
+  &read-palette
+    #0000 [ ;&pal/r STA2 ]
+    #0000 [ ;&pal/g STA2 ]
+    #0000 [ ;&pal/b STA2 ]
+
+    #0000 #0003 DO
+      DUP #40 MUL #04 ADD STH
+
+      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/r LDA2 ] ORA2 [ ;&pal/r STA2 ]
+      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/g LDA2 ] ORA2 [ ;&pal/g STA2 ]
+      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/b LDA2 ] ORA2 [ ;&pal/b STA2 ]
+
+      POPr
+    LOOP
+
+    [ ;&pal/r LDA2 ] .System/r DEO2
+    [ ;&pal/g LDA2 ] .System/g DEO2
+    [ ;&pal/b LDA2 ] .System/b DEO2
+    RTN
+    [ &pal/r $2 &pal/g $2 &pal/b $2 ]
+
+  ( -- n success )
+  &read-number
+    LIT2r 0000 ( : n )
+    #00 [ ;&read-number/started STA ]
+    #0001 [ ;&read-number/sign STA2 ]
+    &read-number/loop
+      ;&get-byte JSR2
+      DUP LIT '- LTH ,&read-number/done JCN
+      DUP LIT '- NEQ ,&read-number/positive JCN
+        #ffff [ ;&read-number/sign STA2 ]
+        POP
+        ,&read-number/loop JMP
+        &read-number/positive
+      LIT '0 SUB #00 SWP ( value : n )
+      STH2r #000a MUL2 ADD2 STH2 ( : n*10+value )
+      #01 [ ;&read-number/started STA ]
+      ,&read-number/loop JMP
+    &read-number/done
+    ( terminator )
+    POP
+    STH2r
+    [ ;&read-number/sign LDA2 ] MUL2
+    [ ;&read-number/started LDA ]
+    RTN
+    [ &read-number/sign $2 &read-number/started $1 ]
+
+  ( -- )
+  &get-line
+    LIT2r :&line
+    &get-line/next-byte
+      ;&read-byte JSR2
+      DUP #00 EQU ,&get-line/eof JCN
+      DUP #0a EQU ,&get-line/done JCN
+      STH2rk STA INC2r
+      ,&get-line/next-byte JMP
+    &get-line/done
+    POP #00 STH2r STA
+    #00
+    RTN
+    &get-line/eof
+    POP POP2r
+    #01
+    RTN
+
+  ( filename* -- )
+  &open-file
+    .File/name DEO2
+    #0001 .File/length DEO2
+    RTN
+
+  ( -- next-byte )
+  &get-byte
+  &read-byte
+    #00 ;&byte STA ( clear byte so that EOF reads as zero )
+    ;&byte .File/read DEO2
+    LIT [ &byte 00 ] ( <- this byte is patched by the two previous instructions! )
+    RTN
+
+  [ &line "hello $100 ]
