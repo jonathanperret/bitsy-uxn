@@ -9,27 +9,22 @@
       ;&get-line JSR2 ,&eof JCN
 
       ;&check-not-type JSR2 "PAL ,&not-pal JCN
-        ;&line ;print JSR2 LF
         ;&read-palette JSR2
       &not-pal
 
       ;&check-not-type JSR2 "SET ,&not-set JCN
-        ;&line ;print JSR2 LF
         ;&read-set JSR2
       &not-set
 
       ;&check-not-type JSR2 "TIL ,&not-til JCN
-        ;&line ;print JSR2 LF
         ;&read-tile JSR2
       &not-til
 
       ;&check-not-type JSR2 "SPR ,&not-spr JCN
-        ;&line ;print JSR2 LF
         ;&read-sprite JSR2
       &not-spr
 
       ;&check-not-type JSR2 "DLG ,&not-dlg JCN
-        ;&line ;print JSR2 LF
       &not-dlg
 
       ;&next-line JMP2
@@ -71,26 +66,17 @@
 
   ( -- )
   &read-tile
-    LIT2r :game/tiles
     ;&line 4++ LDA #60 SUB
 
     ( tile-id )
 
-    #00 SWP 8** STH2 ADD2r
-    ( : tile-data* )
-    #08
-    &read-tile/loop
-      ;&read-binary-byte JSR2 POP
-      STH2rk STA
-      INC2r
-      DEC DUP ,&read-tile/loop JCN
-    POP
-    POP2r
-    RTN
+    #00 SWP 8** ;game/tiles ADD2
+
+    ( tile-data* )
+    ;&read-bitmap JMP2
 
   ( -- )
   &read-sprite
-    LIT2r :game/sprites
     ;&line 4++ LDA LIT 'A SUB
     DUP #20 LTH ,&read-sprite/avatar JCN
     #1f SUB
@@ -98,16 +84,10 @@
 
     ( sprite-id )
 
-    DUP #00 SWP 8** STH2 ADD2r ( : sprite-data* )
+    DUP #00 SWP 8** ;game/sprites ADD2
+    ( sprite-data* )
 
-    #08
-    &read-sprite/loop
-      ;&read-binary-byte JSR2 POP
-      STH2rk STA
-      INC2r
-      DEC DUP ,&read-sprite/loop JCN
-    POP
-    POP2r
+    ;&read-bitmap JSR2
 
     #06 ;&skip-bytes JSR2
 
@@ -128,6 +108,20 @@
     ;&get-byte JSR2 POP
     DEC DUP ,&skip-bytes JCN
     POP
+    RTN
+
+  ( data* -- )
+  &read-bitmap
+    STH2
+    ( : tile-data* )
+    #08
+    &read-tile/loop
+      ;&read-binary-byte JSR2 POP
+      STH2rk STA
+      INC2r
+      DEC DUP ,&read-tile/loop JCN
+    POP
+    POP2r
     RTN
 
   ( -- n success )
@@ -157,7 +151,6 @@
     &read-set/done
     POP2
     ;&get-line JSR2
-    ;&line ;print JSR2 LF
     RTN
 
   ( row* -- row* success )
@@ -255,8 +248,9 @@
     LOOP
 
     ( draw sprites )
-    [ ;&sprite-count LDA ] #00
+    [ ;&sprite-count LDA ]
     &render/sprite-loop
+      DEC
       DUP #00 SWP 2** ;&sprite-pos ADD2 LDA2 ( x y )
       #00 SWP 8** .Screen/y DEO2
       #00 SWP 8** .Screen/x DEO2
@@ -265,8 +259,59 @@
 
       #0d .Screen/sprite DEO
 
-      INC GTHk ,&render/sprite-loop JCN
-    POP POP
+      DUP ,&render/sprite-loop JCN
+    POP
+
+    .Controller/button DEI
+
+    DUP ,&any-button-down JCN
+      #00 [ ;&cooldown STA ]
+      ;&move-done JMP2
+
+    &any-button-down
+
+    [ ;&cooldown LDA ] NOT ,&cooled-down JCN
+      [ ;&cooldown *DEC ]
+      ;&move-done JMP2
+
+    &cooled-down
+
+    DUP #80 AND NOT ,&not-right JCN
+      ;&avatar-x LDA
+      DUP #0e GTH ,&not-right JCN
+      INC ;&avatar-x STA
+      ,&moved JMP
+    &not-right
+
+    DUP #40 AND NOT ,&not-left JCN
+      ;&avatar-x LDA
+      DUP #01 LTH ,&not-left JCN
+      DEC ;&avatar-x STA
+      ,&moved JMP
+    &not-left
+
+    DUP #20 AND NOT ,&not-down JCN
+      ;&avatar-y LDA
+      DUP #0e GTH ,&not-down JCN
+      INC ;&avatar-y STA
+      ,&moved JMP
+    &not-down
+
+    DUP #10 AND NOT ,&not-up JCN
+      ;&avatar-y LDA
+      DUP #01 LTH ,&not-up JCN
+      DEC ;&avatar-y STA
+      ,&moved JMP
+    &not-up
+
+    ,&move-done JMP
+
+    &moved
+    #08 [ ;&cooldown STA ]
+
+    &move-done
+    POP
+
     RTN
   [
     &set
@@ -278,5 +323,7 @@
       $1000
     &sprite-count 00
     &sprite-pos
+      &avatar-x $1 &avatar-y $1
       $200
+    &cooldown 00
   ]
