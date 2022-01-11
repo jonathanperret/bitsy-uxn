@@ -16,8 +16,8 @@
   #00f0 .System/g DEO2
   #000f .System/b DEO2
 
-  #0100 .Screen/width DEO2
-  #0100 .Screen/height DEO2
+  #0080 .Screen/width DEO2
+  #0080 .Screen/height DEO2
 
   ;on-arg-char .Console/vector DEO2
   BRK !
@@ -63,7 +63,9 @@
     LOOP
   LOOP
 
-RTN
+  ;game/render JSR2
+
+  RTN
 
 ~library/string.tal
 ~library/console.lib.tal

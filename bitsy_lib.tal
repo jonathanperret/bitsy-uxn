@@ -8,10 +8,28 @@
     &next-line
       ;&get-line JSR2 ,&eof JCN
 
-      LIT2 "PA LIT "L ;&check-not-type JSR2 ,&not-pal JCN
+      ;&check-not-type JSR2 "PAL ,&not-pal JCN
         ;&line ;print JSR2 LF
         ;&read-palette JSR2
       &not-pal
+
+      ;&check-not-type JSR2 "SET ,&not-set JCN
+        ;&line ;print JSR2 LF
+        ;&read-set JSR2
+      &not-set
+
+      ;&check-not-type JSR2 "TIL ,&not-til JCN
+        ;&line ;print JSR2 LF
+        ;&read-tile JSR2
+      &not-til
+
+      ;&check-not-type JSR2 "SPR ,&not-spr JCN
+        ;&line ;print JSR2 LF
+      &not-spr
+
+      ;&check-not-type JSR2 "DLG ,&not-dlg JCN
+        ;&line ;print JSR2 LF
+      &not-dlg
 
       ;&next-line JMP2
 
@@ -19,10 +37,12 @@
 
     RTN
 
-  ( A B C -- notmatch? )
+  ( -- notmatch? )
   &check-not-type
-    ;&line INC2 LDA2 NEQ2 STH
-    ;&line LDA NEQ
+    STH2rk 3++r ( copy and adjust return address )
+    LDA2k STH2 ;&line STH2k LDA2r NEQ2r
+    INC2 LDA STH
+    INC2 LDA STHr NEQ
     STHr ORA
     RTN
 
@@ -33,11 +53,11 @@
     #0000 [ ;&pal/b STA2 ]
 
     #0000 #0003 DO
-      DUP #40 MUL #04 ADD STH
+      DUP #60 SFT #04 ADD STH
 
-      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/r LDA2 ] ORA2 [ ;&pal/r STA2 ]
-      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/g LDA2 ] ORA2 [ ;&pal/g STA2 ]
-      ;&read-number JSR2 POP STHrk SFT2 [ ;&pal/b LDA2 ] ORA2 [ ;&pal/b STA2 ]
+      ;&pal/r LDA2k ;&read-number JSR2 POP STHrk SFT2 ORA2 SWP2 STA2
+      ;&pal/g LDA2k ;&read-number JSR2 POP STHrk SFT2 ORA2 SWP2 STA2
+      ;&pal/b LDA2k ;&read-number JSR2 POP STHrk SFT2 ORA2 SWP2 STA2
 
       POPr
     LOOP
@@ -48,19 +68,80 @@
     RTN
     [ &pal/r $2 &pal/g $2 &pal/b $2 ]
 
+  ( -- )
+  &read-tile
+    LIT2r :game/tiles
+    ;&line 4++ LDA #60 SUB #00 SWP 8** STH2 ADD2r
+    &read-tile/loop
+      ;&read-binary-byte JSR2 NOT ,&read-tile/done JCN
+      STH2rk STA
+      INC2r
+      ,&read-tile/loop JMP
+    &read-tile/done
+    POP
+    POP2r
+    RTN
+
+  ( -- n success )
+  &read-binary-byte
+    LITr 00
+    #00 [ ;&read-binary-byte/started STA ]
+    &read-binary-byte/loop
+      ;&get-byte JSR2
+      DUP LIT '0 LTH ,&read-binary-byte/done JCN
+      LIT '0 SUB ( value : n )
+      2*r STH ADDr ( : n*2+value )
+      #01 [ ;&read-binary-byte/started STA ]
+      ,&read-binary-byte/loop JMP
+    &read-binary-byte/done
+    ( terminator )
+    POP
+    STHr
+    LIT [ &read-binary-byte/started $1 ]
+    RTN
+
+  ( -- )
+  &read-set
+    ;game/set DUP2 #0100 ADD2 SWP2
+    &read-set/loop
+      ;&read-set-row JSR2 NOT ,&read-set/done JCN
+      GTH2k ,&read-set/loop JCN
+    &read-set/done
+    POP2
+    ;&get-line JSR2
+    ;&line ;print JSR2 LF
+    RTN
+
+  ( row* -- row* success )
+  &read-set-row
+    STH2
+    #00 [ ;&read-set-row/started STA ]
+    &read-set-row/loop
+      ;&get-byte JSR2
+      DUP LIT '0 LTH ,&read-set-row/done JCN
+      #01 [ ;&read-set-row/started STA ]
+      LIT '0 SUB ( '0 -> 0 )
+      DUP #00 EQU ,&read-set-row/not-letter JCN
+        ( LIT '0 ADD LIT 'a SUB INC )
+        #30 SUB ( 'a -> 1 )
+      &read-set-row/not-letter
+      STH2rk STA
+      INC2r
+      ,&read-set-row/loop JMP
+
+    &read-set-row/done
+    POP
+    STH2r
+    LIT [ &read-set-row/started $1 ]
+    RTN
+
   ( -- n success )
   &read-number
     LIT2r 0000 ( : n )
     #00 [ ;&read-number/started STA ]
-    #0001 [ ;&read-number/sign STA2 ]
     &read-number/loop
       ;&get-byte JSR2
-      DUP LIT '- LTH ,&read-number/done JCN
-      DUP LIT '- NEQ ,&read-number/positive JCN
-        #ffff [ ;&read-number/sign STA2 ]
-        POP
-        ,&read-number/loop JMP
-        &read-number/positive
+      DUP LIT '0 LTH ,&read-number/done JCN
       LIT '0 SUB #00 SWP ( value : n )
       STH2r #000a MUL2 ADD2 STH2 ( : n*10+value )
       #01 [ ;&read-number/started STA ]
@@ -69,10 +150,9 @@
     ( terminator )
     POP
     STH2r
-    [ ;&read-number/sign LDA2 ] MUL2
     [ ;&read-number/started LDA ]
     RTN
-    [ &read-number/sign $2 &read-number/started $1 ]
+    [ &read-number/started $1 ]
 
   ( -- )
   &get-line
@@ -106,4 +186,29 @@
     LIT [ &byte 00 ] ( <- this byte is patched by the two previous instructions! )
     RTN
 
-  [ &line "hello $100 ]
+  [
+    &line $1000
+  ]
+
+@game
+  &render
+    #0000 #0010 DO
+      DUP2 8** .Screen/y DEO2
+      #0000 #0010 DO
+        ( y x )
+        DUP2 8** .Screen/x DEO2
+
+        OVR2 10** OVR2 ADD2 ;&set ADD2 LDA
+        #00 SWP 8** ;&tiles ADD2 .Screen/addr DEO2
+
+        #0e .Screen/sprite DEO
+      LOOP
+    LOOP
+    RTN
+  [
+    &set
+      $1000
+    &tiles
+      00 00 00 00 00 00 00 00
+      $1000
+  ]
