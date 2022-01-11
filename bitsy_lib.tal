@@ -25,6 +25,7 @@
 
       ;&check-not-type JSR2 "SPR ,&not-spr JCN
         ;&line ;print JSR2 LF
+        ;&read-sprite JSR2
       &not-spr
 
       ;&check-not-type JSR2 "DLG ,&not-dlg JCN
@@ -71,15 +72,62 @@
   ( -- )
   &read-tile
     LIT2r :game/tiles
-    ;&line 4++ LDA #60 SUB #00 SWP 8** STH2 ADD2r
+    ;&line 4++ LDA #60 SUB
+
+    ( tile-id )
+
+    #00 SWP 8** STH2 ADD2r
+    ( : tile-data* )
+    #08
     &read-tile/loop
-      ;&read-binary-byte JSR2 NOT ,&read-tile/done JCN
+      ;&read-binary-byte JSR2 POP
       STH2rk STA
       INC2r
-      ,&read-tile/loop JMP
-    &read-tile/done
+      DEC DUP ,&read-tile/loop JCN
     POP
     POP2r
+    RTN
+
+  ( -- )
+  &read-sprite
+    LIT2r :game/sprites
+    ;&line 4++ LDA LIT 'A SUB
+    DUP #20 LTH ,&read-sprite/avatar JCN
+    #1f SUB
+    &read-sprite/avatar
+
+    ( sprite-id )
+
+    DUP #00 SWP 8** STH2 ADD2r ( : sprite-data* )
+
+    #08
+    &read-sprite/loop
+      ;&read-binary-byte JSR2 POP
+      STH2rk STA
+      INC2r
+      DEC DUP ,&read-sprite/loop JCN
+    POP
+    POP2r
+
+    #06 ;&skip-bytes JSR2
+
+    ;&read-number JSR2 POP NIP
+    ;&read-number JSR2 POP NIP
+    ( sprite-id x y )
+    ROT
+    ( x y sprite-id )
+    #00 SWP 2** ;game/sprite-pos ADD2
+    ( x y spritepos* )
+    STA2
+
+    [ ;game/sprite-count *INC ]
+    RTN
+
+  ( n -- )
+  &skip-bytes
+    ;&get-byte JSR2 POP
+    DEC DUP ,&skip-bytes JCN
+    POP
     RTN
 
   ( -- n success )
@@ -89,9 +137,9 @@
     &read-binary-byte/loop
       ;&get-byte JSR2
       DUP LIT '0 LTH ,&read-binary-byte/done JCN
+      #01 [ ;&read-binary-byte/started STA ]
       LIT '0 SUB ( value : n )
       2*r STH ADDr ( : n*2+value )
-      #01 [ ;&read-binary-byte/started STA ]
       ,&read-binary-byte/loop JMP
     &read-binary-byte/done
     ( terminator )
@@ -192,6 +240,7 @@
 
 @game
   &render
+    ( draw tiles )
     #0000 #0010 DO
       DUP2 8** .Screen/y DEO2
       #0000 #0010 DO
@@ -204,6 +253,20 @@
         #0e .Screen/sprite DEO
       LOOP
     LOOP
+
+    ( draw sprites )
+    [ ;&sprite-count LDA ] #00
+    &render/sprite-loop
+      DUP #00 SWP 2** ;&sprite-pos ADD2 LDA2 ( x y )
+      #00 SWP 8** .Screen/y DEO2
+      #00 SWP 8** .Screen/x DEO2
+
+      DUP #00 SWP 8** ;&sprites ADD2 .Screen/addr DEO2
+
+      #0d .Screen/sprite DEO
+
+      INC GTHk ,&render/sprite-loop JCN
+    POP POP
     RTN
   [
     &set
@@ -211,4 +274,9 @@
     &tiles
       00 00 00 00 00 00 00 00
       $1000
+    &sprites
+      $1000
+    &sprite-count 00
+    &sprite-pos
+      $200
   ]
